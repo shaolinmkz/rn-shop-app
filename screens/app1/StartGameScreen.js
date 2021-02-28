@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Alert,
+  Image,
 } from "react-native";
 import colors from "../../constants/colors";
 
@@ -41,7 +42,7 @@ export default function StartGameScreen() {
     setWin(null);
     setStart(false);
     setEnteredValue("");
-    setGuessType('');
+    setGuessType("");
   };
 
   const confirmEntry = () => {
@@ -49,7 +50,7 @@ export default function StartGameScreen() {
       Alert.alert("No Guess", "Please enter a value");
     } else if (Number(enteredValue) === gameNumber) {
       setWin(true);
-      setGuessType("Correct...✅" + ` => ${gameNumber}`);
+      setGuessType("Correct...✅");
     } else if (Number(enteredValue) < gameNumber) {
       setGuessType("Guess Higher...👆🏽");
       setWin(false);
@@ -126,8 +127,35 @@ export default function StartGameScreen() {
           </>
         )}
 
-        <View style={{ padding: 50 }}>
-          <Text style={{ fontSize: 15 }}>{guessType}</Text>
+        <View
+          style={{
+            marginTop: 50,
+            alignContent: "center",
+          }}
+        >
+          {win && (
+            <View style={styles.imageContainer}>
+              <Image
+                source={require("../../assets/success.png")}
+                resizeMode="cover"
+                style={{ width: "100%", height: "100%" }}
+              />
+            </View>
+          )}
+          <Text
+            style={{
+              fontSize: 15,
+              marginTop: 10,
+              width: "100%",
+              textAlign: "center",
+              borderColor: win ? colors.black : colors.white,
+              borderRadius: 10,
+              borderWidth: 2,
+              padding: 10,
+            }}
+          >
+            {guessType}
+          </Text>
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -140,7 +168,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
-    paddingHorizontal: 50,
+    paddingHorizontal: 40,
     marginTop: 50,
   },
   heading: {
@@ -183,5 +211,13 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     fontSize: 16,
     textAlign: "center",
+  },
+  imageContainer: {
+    width: 150,
+    height: 150,
+    borderRadius: 300,
+    justifyContent: "center",
+    alignContent: "center",
+    overflow: "hidden",
   },
 });
