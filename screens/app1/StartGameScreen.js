@@ -65,7 +65,7 @@ export default function StartGameScreen() {
       <View style={styles.screen}>
         {!start && (
           <View style={{ padding: 50 }}>
-            <Text style={styles.title}>Start Game</Text>
+            <Text style={styles.heading}>START A NEW GAME!</Text>
             <View>
               <View style={{ marginTop: 20 }}>
                 <Button
@@ -80,7 +80,6 @@ export default function StartGameScreen() {
 
         {start && (
           <>
-            <Text style={styles.heading}>START A NEW GAME!</Text>
             <View style={styles.inputContainer}>
               <Text style={styles.title}>Enter a Number</Text>
               <TextInput
@@ -129,8 +128,9 @@ export default function StartGameScreen() {
 
         <View
           style={{
-            marginTop: 50,
-            alignContent: "center",
+            marginTop: 10,
+            alignItems: "center",
+            width: "100%",
           }}
         >
           {win && (
