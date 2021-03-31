@@ -8,9 +8,11 @@ import ShopNavigator from './navigation/ShopNavigator';
 
 // reducers
 import productReducer from "./store/reducers/products";
+import cartReducer from "./store/reducers/cart";
 
 const reducers = combineReducers({
   products: productReducer,
+  cart: cartReducer,
 });
 
 const store = createStore(reducers);
