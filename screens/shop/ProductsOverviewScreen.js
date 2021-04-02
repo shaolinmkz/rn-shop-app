@@ -12,7 +12,7 @@ const ProductsOverviewScreen = ({ navigation }) => {
   return (
     <FlatList
       data={availableProducts}
-      keyExtractor={(item) => item.id}
+      keyExtractor={({ id }) => id}
       renderItem={({ item: { imageUrl, title, price, id } }) => (
         <ProductItem
           image={imageUrl}

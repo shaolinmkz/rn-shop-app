@@ -43,7 +43,7 @@ export default (state = initialState, actions) => {
           totalAmount: Math.abs(state.totalAmount - productPrice),
         };
       } else {
-        const itemCopy = state.item;
+        const itemCopy = { ...state.item };
         delete itemCopy[id];
         return {
           ...state,

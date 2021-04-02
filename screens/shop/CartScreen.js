@@ -10,10 +10,12 @@ import CartItem from "../../components/shop/CartItem";
 const ProductDetailsScreen = () => {
   const { totalAmount, item } = useSelector(({ cart }) => ({
     totalAmount: cart.totalAmount,
-    item: Object.keys(cart.item).map((key) => ({
-      productId: key,
-      ...cart.item[key],
-    })),
+    item: Object.keys(cart.item)
+      .map((key) => ({
+        productId: key,
+        ...cart.item[key],
+      }))
+      .sort((a, b) => (a.productId > b.productId ? 1 : -1)),
   }));
 
   const dispatch = useDispatch();
