@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
+import { composeWithDevTools } from 'redux-devtools-extension';
 import * as Font from "expo-font";
 
 // Screen Navigator
@@ -15,7 +16,7 @@ const reducers = combineReducers({
   cart: cartReducer,
 });
 
-const store = createStore(reducers);
+const store = createStore(reducers, {}, composeWithDevTools());
 
 const fetchFonts = () => {
   return Font.loadAsync({

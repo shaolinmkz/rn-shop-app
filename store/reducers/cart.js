@@ -16,14 +16,14 @@ export default (state = initialState, actions) => {
           ...state.item,
           [id]: state.item[id]
             ? new CartItemModel(
-                state.item[id]?.quantity,
+                state.item[id]?.quantity + 1,
                 price,
                 title,
                 state.item[id].sum + price
               )
             : new CartItemModel(1, price, title, price),
-            totalAmount: state.totalAmount + price
-        },
+          },
+          totalAmount: state.totalAmount + price
       };
     }
     default:
