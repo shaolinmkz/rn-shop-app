@@ -81,7 +81,18 @@ const Orders = () => {
       <Stack.Screen
         name="Orders"
         component={OrdersScreen}
-        options={{ title: "Your Orders" }}
+        options={({ navigation }) => ({
+          headerLeft: () => (
+            <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+              <Item
+                title="Cart"
+                iconName={Platform.OS === "android" ? "md-menu" : "ios-menu"}
+                onPress={navigation.toggleDrawer}
+              />
+            </HeaderButtons>
+          ),
+          title: "Your Orders",
+        })}
       />
     </Stack.Navigator>
   );

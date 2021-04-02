@@ -10,7 +10,7 @@ export default (state = initialState, actions) => {
     case ADD_ORDER: {
       const { items, amount } = actions.payload;
       const newOrder = new OrderModel(
-        Date.now(),
+        Date.now().toString(),
         items,
         amount,
         Date().toString()
