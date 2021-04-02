@@ -1,9 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Image, Text, StyleSheet, FlatList, Button, View } from "react-native";
+import { Text, StyleSheet, FlatList, Button, View } from "react-native";
 
 import * as cartActions from "../../store/actions/cart";
-import ProductItem from "../../components/shop/ProductItem";
 import colors from "../../constants/colors";
 import fonts from "../../constants/fonts";
 import CartItem from "../../components/shop/CartItem";
@@ -34,10 +33,13 @@ const ProductDetailsScreen = () => {
       <FlatList
         data={item}
         key={({ productId }) => productId}
-        renderItem={({ item: { quantity, productPrice, productTitle, productId } }) => (
+        renderItem={({
+          item: { quantity, productPrice, productTitle, productId },
+        }) => (
           <CartItem
-            key={productId}
-            onRemove={() => {}}
+            onRemove={() => {
+              dispatch(cartActions.removeItem(productId));
+            }}
             quantity={quantity}
             productPrice={productPrice}
             productTitle={productTitle}
